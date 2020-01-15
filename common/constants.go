@@ -22,6 +22,7 @@ const (
 	MergeSignRange             = 15
 	RangeReturnSigner          = 150
 	MinimunMinerBlockPerEpoch  = 1
+	IgnoreSignerCheckBlock     = uint64(14458500)
 )
 
 var TIP2019Block = big.NewInt(1050000)
@@ -34,13 +35,17 @@ var IsTestnet bool = false
 var StoreRewardFolder string
 var RollbackHash Hash
 var BasePrice = big.NewInt(1000000000000000000) // 1
+var RelayerLockedFund = big.NewInt(20000)       // 20000 TOMO
 var RelayerFee = big.NewInt(1000000000000000)   // 0.001
-var TomoXBaseFee = big.NewInt(1000)
+var TomoXBaseFee = big.NewInt(10000)
+var RelayerCancelFee = big.NewInt(100000000000000) // 0.0001
+var TomoXBaseCancelFee = big.NewInt(10000)         // 1/10000
 
 var MinGasPrice = big.NewInt(DefaultMinGasPrice)
 var TRC21IssuerSMCTestNet = HexToAddress("0x7081C72c9DC44686C7B7EAB1d338EA137Fa9f0D3")
-var TRC21IssuerSMC = HexToAddress("0x1903311edEfe4b2a8367857e916FEDb3C78547da")
-var TRC21GasPrice = big.NewInt(DefaultMinGasPrice)
+var TRC21IssuerSMC = HexToAddress("0x8c0faeb5C6bEd2129b8674F262Fd45c4e9468bee")
+var TRC21GasPriceBefore = big.NewInt(2500)
+var TRC21GasPrice = big.NewInt(250000000)
 var Blacklist = map[Address]bool{
 	HexToAddress("0x5248bfb72fd4f234e062d3e9bb76f08643004fcd"): true,
 	HexToAddress("0x5ac26105b35ea8935be382863a70281ec7a985e9"): true,
